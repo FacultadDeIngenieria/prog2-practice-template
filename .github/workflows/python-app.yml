@@ -55,7 +55,7 @@ jobs:
       name: Run All Tests
       run: |
         chmod +x .github/scripts/run-current-test.sh 
-        sh .github/scripts/run-current-test.sh
+        bash .github/scripts/run-current-test.sh
     - if: inputs.publish_tps == true
       name: Publish ${{ inputs.tp }}
       run: |
