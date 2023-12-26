@@ -55,7 +55,7 @@ jobs:
       name: Run All Tests
       run: |
         pytest
-    - if: inputs.publish_tps == 'true'
+    - if: inputs.publish_tps == True
       name: Publish tp ${{ inputs.tp }}
       run: |
         pytest exercises/practice/${{ inputs.tp }} 
