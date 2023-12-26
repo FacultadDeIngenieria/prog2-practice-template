@@ -10,7 +10,7 @@ on:
     inputs:
       tp:
         type: choice
-        description: 'tp to hand-in. Select all to run all tests'
+        description: 'TP to hand-in'
         required: true
         options:
           - tp-1
@@ -22,7 +22,7 @@ on:
           - tp-7
       publish_tps:
         type: boolean
-        description: 'True if you want to hand-in, False otherwise for running all tests'
+        description: 'True if you want to hand-in, False otherwise for just running all tests'
         required: true
         default: False
 
@@ -51,13 +51,14 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - if: github.event_name == 'push' || inputs.publish_tps == 'false'
+      name: Run All Tests
       run: |
         pytest
     - if: inputs.publish_tps == 'true'
-      name: Publish Artifacts
+      name: Publish tp ${{ inputs.tp }}
       run: |
-        pytest ${{ inputs.tp }} 
+        pytest exercises/practice/${{ inputs.tp }} 
         if [ $? -eq 0 ]; then
           echo "${{ inputs.tp }} Successfully handed-in!"
         else
