@@ -1,3 +1,2 @@
-
 def proteins(strand):
     pass
