@@ -54,16 +54,8 @@ jobs:
     - if: github.event_name == 'push' || inputs.publish_tps == false
       name: Run All Tests
       run: |
-        # Read the second line from the file
-        current_tp=$(sed -n '2p' current_tp.txt)
-
-        # Generate the string based on the value of second_line
-        result=""
-        for ((i=1; i<=second_line; i++)); do
-          result+="exercises/practice/tp-$i "
-        done
-        pytest $result
-
+        chmod +x .github/scripts/run-current-test.sh 
+        sh .github/scripts/run-current-test.sh
     - if: inputs.publish_tps == true
       name: Publish ${{ inputs.tp }}
       run: |
