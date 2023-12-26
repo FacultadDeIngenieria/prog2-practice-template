@@ -56,7 +56,7 @@ jobs:
       run: |
         pytest
     - if: inputs.publish_tps == true
-      name: Publish tp ${{ inputs.tp }}
+      name: Publish ${{ inputs.tp }}
       run: |
         pytest exercises/practice/${{ inputs.tp }} 
         if [ $? -eq 0 ]; then

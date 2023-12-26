@@ -10,3 +10,4 @@
 * TP 6: [Instructions](./exercises/practice/tp-1-matrix/instructions.md)
 * TP 7: [Instructions](./exercises/practice/tp-1-matrix/instructions.md)
 * TP 8: [Instructions](./exercises/practice/tp-1-matrix/instructions.md)
+* TP 9: [Instructions](./exercises/practice/tp-1-matrix/instructions.md)
